@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import images from "./images";
 import Forecast from "./Forecast";
 import axios from "axios";
+import FriendlyDateFormatted from "./FriendlyDateFormatted";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -15,6 +16,7 @@ export default function Weather(props) {
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       humidity: Math.round(response.data.main.humidity),
+      date: new Date(response.data.dt) * 1000,
       icon: response.data.weather[0].icon,
       iconUrl: `http://openweathermap.org/img/wn/10d@2x.png`,
     });
@@ -78,7 +80,7 @@ export default function Weather(props) {
               </span>
             </form>
             <span className="date" id="date">
-              Thu, 22 April 9:30am 2022
+              <FriendlyDateFormatted date={weatherData.date} />
             </span>
             <div className="currentState" id="currentState">
               <div className="weatherState" id="weather-state">
