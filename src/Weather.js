@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import images from "./images";
+// import clear sky from "./images/01d.png"
 import Forecast from "./Forecast";
 import axios from "axios";
 import FriendlyDateFormatted from "./FriendlyDateFormatted";
