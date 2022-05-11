@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Forecast from "./Forecast";
 import axios from "axios";
 import FriendlyDateFormatted from "./FriendlyDateFormatted";
+import InputForm from "./InputForm";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -17,8 +18,7 @@ export default function Weather(props) {
       city: response.data.name,
       humidity: Math.round(response.data.main.humidity),
       date: new Date(response.data.dt * 1000),
-      icon: response.data.weather[0].icon,
-      iconUrl: `http://openweathermap.org/img/wn/10d@2x.png`,
+      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
 
@@ -54,31 +54,7 @@ export default function Weather(props) {
             />
           </div>
           <div className="currentData" id="currentData">
-            <form className="typeLocation" id="type-location-form">
-              <input
-                type="text"
-                placeholder="Type your location..."
-                className="location"
-                id="location-input"
-              />
-
-              <span
-                className="searchButton"
-                id="search-button"
-                role="img"
-                aria-labelledby="currentLocation"
-              >
-                🔍
-              </span>
-              <span
-                className="currentLocation"
-                id="current-location"
-                role="img"
-                aria-labelledby="currentLocation"
-              >
-                🎯
-              </span>
-            </form>
+            <InputForm />
             <span className="date" id="date">
               <FriendlyDateFormatted date={weatherData.date} />
             </span>
