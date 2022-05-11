@@ -1,5 +1,6 @@
 import React from "react";
 import sunny from "./images/01d.png";
+import Forecast from "./Forecast";
 
 export default function Weather() {
   return (
@@ -70,7 +71,9 @@ export default function Weather() {
           </div>
         </div>
 
-        <div id="forecast-wrapper"></div>
+        <div id="forecast-wrapper">
+          <Forecast />
+        </div>
       </div>
       <div className="test">
         <p>
