@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Forecast from "./Forecast";
 import axios from "axios";
 import FriendlyDateFormatted from "./FriendlyDateFormatted";
+import WeatherIcons from "./WeatherIcons";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -18,7 +19,7 @@ export default function Weather(props) {
       city: response.data.name,
       humidity: Math.round(response.data.main.humidity),
       date: new Date(response.data.dt * 1000),
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      // iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       icon: response.data.weather[0].icon,
     });
   }
@@ -43,7 +44,12 @@ export default function Weather(props) {
     return (
       <div className="Wrapper">
         <div className="pictureBg">
-          <img src={weatherData.iconUrl} alt="" className="backgroundImg" />
+          <WeatherIcons code={weatherData.icon} />
+          <img
+            src={weatherData.icon}
+            alt={weatherData.description}
+            className="backgroundImg"
+          />
         </div>
         <div className="container">
           <div className="headline" id="headline">
@@ -64,9 +70,10 @@ export default function Weather(props) {
             </div>
           </div>
           <div>
+            <WeatherIcons code={weatherData.icon} />
             <img
               className="weatherIcon"
-              src={weatherData.iconUrl}
+              src={weatherData.icon}
               alt={weatherData.description}
             />
           </div>
