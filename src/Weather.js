@@ -93,14 +93,15 @@ export default function Weather(props) {
                 value="🔍"
               />
 
-              <input
+              <span
                 className="currentLocation"
                 id="current-location"
                 role="img"
                 aria-labelledby="currentLocation"
-                value="🎯"
                 type="sumbit"
-              />
+              >
+                🎯
+              </span>
             </form>
             <span className="date" id="date">
               <FriendlyDateFormatted date={weatherData.date} />
