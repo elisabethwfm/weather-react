@@ -44,12 +44,9 @@ export default function Weather(props) {
     return (
       <div className="Wrapper">
         <div className="pictureBg">
-          <WeatherIcons code={weatherData.icon} />
-          <img
-            src={weatherData.icon}
-            alt={weatherData.description}
-            className="backgroundImg"
-          />
+          <div className="backgroundImg">
+            <WeatherIcons code={weatherData.icon} />
+          </div>
         </div>
         <div className="container">
           <div className="headline" id="headline">
@@ -69,13 +66,8 @@ export default function Weather(props) {
               </span>
             </div>
           </div>
-          <div>
+          <div className="weatherIcon">
             <WeatherIcons code={weatherData.icon} />
-            <img
-              className="weatherIcon"
-              src={weatherData.icon}
-              alt={weatherData.description}
-            />
           </div>
           <div className="currentData" id="currentData">
             <form
