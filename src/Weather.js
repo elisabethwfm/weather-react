@@ -84,23 +84,23 @@ export default function Weather(props) {
                 onChange={updateCity}
               />
 
-              <span
+              <input
                 className="searchButton"
                 id="search-button"
-                role="button"
+                role="img"
                 aria-labelledby="currentLocation"
                 type="submit"
-              >
-                🔍
-              </span>
-              <span
+                value="🔍"
+              />
+
+              <input
                 className="currentLocation"
                 id="current-location"
                 role="img"
                 aria-labelledby="currentLocation"
-              >
-                🎯
-              </span>
+                value="🎯"
+                type="sumbit"
+              />
             </form>
             <span className="date" id="date">
               <FriendlyDateFormatted date={weatherData.date} />
