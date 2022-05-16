@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Forecast from "./Forecast";
 import axios from "axios";
 import FriendlyDateFormatted from "./FriendlyDateFormatted";
-import InputForm from "./InputForm";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -24,6 +23,22 @@ export default function Weather(props) {
     });
   }
 
+  function search() {
+    const apiKey = "bada8b7e78b2e8f21ed242b93f56b802";
+
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Wrapper">
@@ -33,7 +48,7 @@ export default function Weather(props) {
         <div className="container">
           <div className="headline" id="headline">
             <span className="currentCity" id="current-city">
-              London
+              {weatherData.city}
             </span>
             <div className="currentTemp" id="current-temp">
               <span className="temperature" id="temperature">
@@ -56,7 +71,37 @@ export default function Weather(props) {
             />
           </div>
           <div className="currentData" id="currentData">
-            <InputForm />
+            <form
+              className="typeLocation"
+              id="type-location-form"
+              onSubmit={handleSubmit}
+            >
+              <input
+                type="text"
+                placeholder="Type your location..."
+                className="location"
+                id="location-input"
+                onChange={updateCity}
+              />
+
+              <span
+                className="searchButton"
+                id="search-button"
+                role="button"
+                aria-labelledby="currentLocation"
+                type="submit"
+              >
+                🔍
+              </span>
+              <span
+                className="currentLocation"
+                id="current-location"
+                role="img"
+                aria-labelledby="currentLocation"
+              >
+                🎯
+              </span>
+            </form>
             <span className="date" id="date">
               <FriendlyDateFormatted date={weatherData.date} />
             </span>
@@ -100,10 +145,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "bada8b7e78b2e8f21ed242b93f56b802";
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return "Loading ... ";
   }
 }
