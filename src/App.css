@@ -140,6 +140,7 @@ body {
   top: 20px;
   z-index: 10;
   object-fit: contain;
+  grid-column: span 2;
 }
 
 .currentData {

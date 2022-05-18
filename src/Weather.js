@@ -65,9 +65,9 @@ export default function Weather(props) {
                 °F
               </span>
             </div>
-          </div>
-          <div className="weatherIcon">
-            <WeatherIcons code={weatherData.icon} height="72" />
+            <div className="weatherIcon">
+              <WeatherIcons code={weatherData.icon} height="72" />
+            </div>
           </div>
           <div className="currentData" id="currentData">
             <form
