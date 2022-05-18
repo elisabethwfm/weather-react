@@ -74,8 +74,8 @@ export default function WeatherIcon(props) {
     <img
       src={`/images/${props.code}.png`}
       alt={props.alt}
-      height="75"
-      className="icon"
+      height={props.height}
+      // className="icon"
     />
   );
 }
