@@ -5,6 +5,7 @@ import Forecast from "./Forecast";
 import axios from "axios";
 import FriendlyDateFormatted from "./FriendlyDateFormatted";
 import WeatherIcons from "./WeatherIcons";
+import WeatherTemp from "./WeatherTemp";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -61,13 +62,7 @@ export default function Weather(props) {
               <span className="temperature" id="temperature">
                 {weatherData.temperature}
               </span>
-              <span className="celsius" id="celsius">
-                °C
-              </span>
-              /
-              <span className="fahrenheit inactive" id="fahrenheit">
-                °F
-              </span>
+              <WeatherTemp celsius={weatherData.temperature} />
             </div>
             <div>
               <WeatherIcons code={weatherData.icon} className="weatherIcon" />
