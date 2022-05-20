@@ -55,9 +55,6 @@ export default function Weather(props) {
               {weatherData.city}
             </span>
             <div className="currentTemp" id="current-temp">
-              <span className="temperature" id="temperature">
-                {weatherData.temperature}
-              </span>
               <WeatherTemp celsius={weatherData.temperature} />
             </div>
             <div>
