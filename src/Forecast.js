@@ -3,7 +3,7 @@ import WeatherIcon from "./WeatherIcons";
 import axios from "axios";
 
 export default function Forecast(props) {
-  let [loaded, setLoaded] = useState(false);
+  let [loaded, setLoaded] = useState(false); //false, because the default state is, that it is not loaded yet
   function handleResponse(response) {
     console.log(response.data);
   }
