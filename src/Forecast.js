@@ -25,11 +25,10 @@ export default function Forecast(props) {
             </div>
             <div className="forecast" id="forecast">
               <span className="maxTemp" id="max-temp">
-                18°C
-              </span>
-              °{" "}
+                {Math.round(forecast[0].temp.max)}°
+              </span>{" "}
               <span className="minTemp" id="min-temp">
-                10°
+                {Math.round(forecast[0].temp.min)}°
               </span>
             </div>
           </div>
