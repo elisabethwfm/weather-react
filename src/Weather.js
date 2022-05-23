@@ -24,7 +24,6 @@ export default function Weather(props) {
       // iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       icon: response.data.weather[0].icon,
     });
-    console.log(response.data.coord);
   }
 
   function search() {
