@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import WeatherIcon from "./WeatherIcons";
 import axios from "axios";
 
 export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
   function handleResponse(response) {
     console.log(response.data);
   }
