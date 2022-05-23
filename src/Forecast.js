@@ -18,9 +18,9 @@ export default function Forecast() {
             <span className="maxTemp" id="max-temp">
               18°C
             </span>
-            °
+            °{" "}
             <span className="minTemp" id="min-temp">
-              Something°
+              10°
             </span>
           </div>
         </div>
