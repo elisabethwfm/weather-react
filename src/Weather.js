@@ -14,6 +14,7 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      coords: response.data.coord,
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       wind: Math.round(response.data.wind.speed),
@@ -23,6 +24,7 @@ export default function Weather(props) {
       // iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       icon: response.data.weather[0].icon,
     });
+    console.log(response.data.coord);
   }
 
   function search() {
@@ -111,7 +113,7 @@ export default function Weather(props) {
           </div>
 
           <div id="forecast-wrapper">
-            <Forecast />
+            <Forecast coords={weatherData.coords} />
           </div>
         </div>
         <div className="test">
