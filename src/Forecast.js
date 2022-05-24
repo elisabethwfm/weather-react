@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import WeatherIcon from "./WeatherIcons";
 import axios from "axios";
+import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false); //false, because the default state is that it is not loaded yet
@@ -15,25 +15,7 @@ export default function Forecast(props) {
       <div className="Forecast">
         <div className="testGrid">
           <div className="forecastGrid" id="forecastGrid">
-            <div className="days" id="days">
-              <p>{forecast[0].dt}</p>
-            </div>
-            <div className="icons" id="icons">
-              <span className="cloudy" id="cloudy">
-                <WeatherIcon
-                  code={forecast[0].weather[0].icon}
-                  className="icons"
-                />
-              </span>
-            </div>
-            <div className="forecast" id="forecast">
-              <span className="maxTemp" id="max-temp">
-                {Math.round(forecast[0].temp.max)}°
-              </span>{" "}
-              <span className="minTemp" id="min-temp">
-                {Math.round(forecast[0].temp.min)}°
-              </span>
-            </div>
+            <ForecastDay data={forecast[0]} />
           </div>
         </div>
       </div>
