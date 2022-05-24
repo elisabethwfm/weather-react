@@ -5,6 +5,7 @@ import ForecastDay from "./ForecastDay";
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false); //false, because the default state is that it is not loaded yet
   let [forecast, setForecast] = useState("");
+
   function handleResponse(response) {
     setForecast(response.data.daily);
     setLoaded(true); //this shows the response
@@ -14,9 +15,17 @@ export default function Forecast(props) {
     return (
       <div className="Forecast">
         <div className="testGrid">
-          <div className="forecastGrid" id="forecastGrid">
-            <ForecastDay data={forecast[0]} />
-          </div>
+          {forecast.map(function (dailyForecast, index) {
+            if (index < 5) {
+              return (
+                <div className="forecastGrid" id="forecastGrid" key={index}>
+                  <ForecastDay data={dailyForecast} />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
     );
