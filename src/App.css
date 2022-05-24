@@ -276,7 +276,8 @@ body {
 .icons {
   display: flex;
   margin: 0px auto 20px;
-  height: 86px;
+  height: auto;
+  width: 110px;
   align-items: center;
 }
 
