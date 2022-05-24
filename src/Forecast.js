@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false); //false, because the default state is that it is not loaded yet
   let [forecast, setForecast] = useState("");
+
+  //if the coordinates change we want to set loaded to false, because it runs the api call again and the forecast gets updated as well
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coords]); //if this changes, the line above is called
 
   function handleResponse(response) {
     setForecast(response.data.daily);
