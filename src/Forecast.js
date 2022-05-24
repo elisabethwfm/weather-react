@@ -9,7 +9,7 @@ export default function Forecast(props) {
   //if the coordinates change we want to set loaded to false, because it runs the api call again and the forecast gets updated as well
 
   useEffect(() => {
-    setLoaded(false);
+    setLoaded(false); //resets the loaded false and makes a new api call
   }, [props.coords]); //if this changes, the line above is called
 
   function handleResponse(response) {
