@@ -16,11 +16,14 @@ export default function Forecast(props) {
         <div className="testGrid">
           <div className="forecastGrid" id="forecastGrid">
             <div className="days" id="days">
-              <p>Monday</p>
+              <p>{forecast[0].dt}</p>
             </div>
             <div className="icons" id="icons">
               <span className="cloudy" id="cloudy">
-                <WeatherIcon code="01d" className="icons" />
+                <WeatherIcon
+                  code={forecast[0].weather[0].icon}
+                  className="icons"
+                />
               </span>
             </div>
             <div className="forecast" id="forecast">
