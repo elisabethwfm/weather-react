@@ -23,6 +23,7 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       // iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       icon: response.data.weather[0].icon,
+      country: response.data.sys.country,
     });
   }
 
@@ -53,7 +54,7 @@ export default function Weather(props) {
         <div className="container">
           <div className="headline" id="headline">
             <span className="currentCity" id="current-city">
-              {weatherData.city}
+              {weatherData.city}, {weatherData.country}
             </span>
             <div className="currentTemp" id="current-temp">
               <WeatherTemp celsius={weatherData.temperature} />
